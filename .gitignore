@@ -1,0 +1,18 @@
+# Maven build output
+target/
+
+# VS Code settings
+.vscode/
+
+# IntelliJ settings
+.idea/
+
+# Compiled Java files
+*.class
+
+# Environment files and secrets
+.env
+.env.*
+
+# Local configuration
+application-local.properties
