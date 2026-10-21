@@ -1,61 +1,158 @@
-# StudentManagementSystem
-STUDENT MANAGEMENT SYSTEM - JAVA SWING + MYSQL + VS CODE
+# Student Management System
 
-WHAT THIS PROJECT USES
-- Frontend: Java Swing (the graphical window)
-- Backend: Java methods and JDBC (database connection)
-- Database: MySQL
-- Build/dependency manager: Maven (downloads MySQL Connector/J automatically)
+A Java-based Student Management System developed using **Java Swing, JDBC, MySQL, and Maven**. The application provides a graphical interface for managing student information, marks, attendance, and results, with MySQL used to store records persistently.
 
-STEP A - CREATE THE DATABASE
-Option 1: MySQL Workbench
-1. Open MySQL Workbench and connect to your local MySQL server.
-2. Open sql/setup.sql from this project.
-3. Click the lightning bolt / Execute button to run the whole script.
+## 📌 Project Overview
 
-STEP B - SET YOUR MYSQL LOGIN
-The app defaults to:
-  username: root
-  password: (blank)
-This often matches a default local XAMPP setup, but not every MySQL installation.
-If your MySQL root account has a password, set these Windows environment variables before launching VS Code:
-  SMS_DB_USER = root
-  SMS_DB_PASSWORD = your_actual_mysql_password
+The Student Management System is designed to simplify student record management through a user-friendly desktop application. It allows users to register students, manage academic marks, record attendance, calculate results, and search student records.
 
+## ✨ Features
 
-STEP C - OPEN IN VS CODE
-1. Extract the ZIP file to a normal folder (do not run it from inside the ZIP).
-2. In VS Code choose File > Open Folder.
-3. Select the StudentManagementSystemMySQL folder (the one containing pom.xml).
-4. If VS Code asks to import the Maven project, accept.
-5. Wait while Maven downloads MySQL Connector/J. Internet is needed for the first download.
+* **Student Registration:** Add and manage student details, including roll number, name, course, and age.
+* **Marks Management:** Enter and manage marks for three subjects.
+* **Attendance Management:** Record total classes and classes attended.
+* **Result Calculation:** Calculate student totals and percentages based on entered marks.
+* **Record Search:** Search for student records.
+* **All Records:** View stored student information in a table.
+* **MySQL Database:** Store student information persistently.
+* **Graphical User Interface:** Use a desktop interface built with Java Swing.
 
-STEP D - RUN
-In VS Code, choose Terminal > New Terminal. Make sure the terminal is in the folder containing pom.xml.
-Run:
-  mvn clean compile
-Then:
-  mvn exec:java
-The Swing graphical window should open.
+## 🛠️ Technologies Used
 
-If `mvn` is not recognized, install Apache Maven and add Maven's bin folder to PATH, then close/reopen VS Code. Alternatively use the Maven panel in VS Code and run the exec goal after the project imports.
+| Technology         | Purpose                                 |
+| ------------------ | --------------------------------------- |
+| Java               | Application logic and backend           |
+| Java Swing         | Graphical user interface                |
+| JDBC               | Communication between Java and MySQL    |
+| MySQL              | Database and persistent storage         |
+| Maven              | Project build and dependency management |
+| MySQL Connector/J  | JDBC driver for MySQL                   |
+| Visual Studio Code | Development environment                 |
 
-HOW THE CONNECTION WORKS
-- Java Swing is the graphical frontend.
-- StudentManagementSystem.java contains the application logic and JDBC calls (backend).
-- MySQL stores student registration, marks, and attendance in the student_management.students table.
-- JDBC connects to jdbc:mysql://localhost:3306/student_management.
-- Registering/updating a student writes the data to MySQL; startup loads saved records from MySQL.
+## 📂 Project Structure
 
-TROUBLESHOOTING
-- Communications link failure / connection refused: make sure MySQL Server is running and listening on port 3306.
-- Access denied for user: set SMS_DB_USER and SMS_DB_PASSWORD correctly.
-- Unknown database 'student_management': run sql/setup.sql.
-- No suitable driver: ensure Maven imported/downloaded dependencies; run `mvn clean compile` again.
-- `mvn` is not recognized: Maven is not installed or its bin folder is not on PATH.
-- The Java app is a desktop Swing app; it is not a website.
+```text
+StudentManagementSystemMySQL/
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── example/
+│                   └── student/
+│                       ├── StudentManagementSystem.java
+│                       └── DBConnection.java
+├── sql/
+│   └── setup.sql
+├── pom.xml
+├── README.md
+└── .gitignore
+```
 
-FEATURES
-Student registration, marks for three subjects, attendance entry, result and grade calculation, search, records table, dashboard summary.
-Grades use example boundaries in the source and can be changed for your college's rules.
+## ⚙️ Prerequisites
 
+Before running the application, install the following:
+
+* Java JDK
+* Apache Maven
+* MySQL Server
+* MySQL Workbench (optional, for database management)
+* Visual Studio Code (recommended)
+
+## 🗄️ Database Setup
+
+1. Start your MySQL Server.
+2. Open MySQL Workbench and connect to your MySQL instance.
+3. Open the `sql/setup.sql` file from this project.
+4. Execute the SQL script to create the required database and tables.
+5. Verify that the database and tables have been created successfully.
+
+**Note:** The database name, table name, and columns in `setup.sql` must match those used in the Java application.
+
+## 🔌 Database Configuration
+
+The application uses JDBC to connect Java to MySQL.
+
+Configure your database connection details in the application. The connection requires:
+
+* **Database URL:** `jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC`
+* **Username:** Your MySQL username
+* **Password:** Your MySQL password
+
+For better security, configure database credentials using environment variables rather than storing passwords directly in source code.
+
+For example, in PowerShell:
+
+```powershell
+$env:SMS_DB_USER="root"
+$env:SMS_DB_PASSWORD="your_mysql_password"
+```
+
+Replace `your_mysql_password` with your actual MySQL password. These commands apply to the current PowerShell session.
+
+## ▶️ How to Run the Project
+
+### 1. Open the Project
+
+Open the `StudentManagementSystemMySQL` folder in Visual Studio Code.
+
+### 2. Configure MySQL
+
+Make sure MySQL Server is running and that the database setup script has been executed.
+
+### 3. Open the Terminal
+
+In VS Code, select **Terminal → New Terminal** and navigate to the folder containing `pom.xml`.
+
+### 4. Compile the Project
+
+```bash
+mvn clean compile
+```
+
+### 5. Run the Application
+
+```bash
+mvn exec:java
+```
+
+If Maven cannot identify the main class, verify the `exec-maven-plugin` configuration in `pom.xml` and ensure the main class is correctly specified.
+
+## 🔄 How It Works
+
+1. The user interacts with the application through the Java Swing interface.
+2. Java handles user input and application operations.
+3. JDBC establishes a connection between the Java application and MySQL.
+4. SQL queries insert, retrieve, and update student records.
+5. MySQL stores the records so they remain available after the application closes and reopens.
+
+## 🎯 Learning Outcomes
+
+This project demonstrates:
+
+* Java application development using object-oriented programming.
+* GUI development using Java Swing.
+* Database connectivity using JDBC.
+* MySQL database creation and record management.
+* Maven project structure, dependencies, and build commands.
+* Integration of a Java desktop application with a relational database.
+
+## 🚀 Future Enhancements
+
+* User login and role-based access.
+* Export student records to CSV or PDF.
+* Improved validation and error handling.
+* Report generation for marks and attendance.
+* Enhanced user interface and dashboard statistics.
+
+## 👩‍💻 Project Information
+
+**Project Name:** Student Management System
+**Project Type:** Java Desktop Application
+**Backend:** Java
+**Frontend:** Java Swing
+**Database:** MySQL
+**Build Tool:** Maven
+
+---
+
+**Developed as an academic project to demonstrate Java, database connectivity, and student record management.**
