@@ -7,38 +7,21 @@ WHAT THIS PROJECT USES
 - Database: MySQL
 - Build/dependency manager: Maven (downloads MySQL Connector/J automatically)
 
-BEFORE STARTING
-1. Java JDK is already installed if `java -version` and `javac -version` work.
-2. Install MySQL Server (or install XAMPP and start its MySQL service).
-3. Install Apache Maven, or use VS Code's Java Extension Pack/Maven support.
-4. In VS Code, install the Extension Pack for Java.
-
 STEP A - CREATE THE DATABASE
 Option 1: MySQL Workbench
 1. Open MySQL Workbench and connect to your local MySQL server.
 2. Open sql/setup.sql from this project.
 3. Click the lightning bolt / Execute button to run the whole script.
 
-Option 2: phpMyAdmin (if using XAMPP)
-1. Start MySQL in the XAMPP Control Panel.
-2. Open phpMyAdmin in your browser.
-3. Select the SQL tab, paste/run the contents of sql/setup.sql.
-
 STEP B - SET YOUR MYSQL LOGIN
 The app defaults to:
   username: root
   password: (blank)
 This often matches a default local XAMPP setup, but not every MySQL installation.
-
 If your MySQL root account has a password, set these Windows environment variables before launching VS Code:
   SMS_DB_USER = root
   SMS_DB_PASSWORD = your_actual_mysql_password
 
-For temporary setup in Command Prompt, use (replace the password):
-  set SMS_DB_USER=root
-  set SMS_DB_PASSWORD=your_actual_mysql_password
-Then launch the app from that same Command Prompt.
-Do not share your password or put it in a public repository.
 
 STEP C - OPEN IN VS CODE
 1. Extract the ZIP file to a normal folder (do not run it from inside the ZIP).
